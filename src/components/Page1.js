@@ -12,7 +12,7 @@ import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 // import Grid from 'material-ui/Grid';
 
 const paper1 = {
-  backgroundColor: '#F8ECC2',
+  backgroundColor: '#fff8e0',
   // height: 350,
   // width: 300,
   marginBottom: 80,
@@ -25,7 +25,7 @@ const paper1 = {
   // display: 'inline-block',
 };
 const paper2 = {
-  backgroundColor: '#F8ECC2',
+  backgroundColor: '#fff8e0',
 
   // height: 520,
   // width: 800,
@@ -41,7 +41,7 @@ const paper2 = {
   // display: 'inline-block',
 };
 const paper3 = {
-  backgroundColor: '#F8ECC2',
+  backgroundColor: '#fff8e0',
 
   // height: 320,
   // width: 800,
