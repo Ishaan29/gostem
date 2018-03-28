@@ -15,7 +15,7 @@ import {firebase} from '../firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// const App = () => 
+// const App = () =>
 //   <Router>
 //       <div>
 //       <Navigation />
@@ -66,7 +66,7 @@ class App extends Component {
   }
   render() {
     return(
-      
+
         <Router>
           <div>
             <Navigation authUser={this.state.authUser} />
@@ -95,12 +95,12 @@ class App extends Component {
           exact path={routes.ACCOUNT}
           component={() => < SideBarComponent/>}
         />
-      
+
         </div>
 
-       
+
        </Router>
-      
+
     );
   }
 }
