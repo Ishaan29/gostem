@@ -11,6 +11,8 @@ import './page1.css';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 // import Grid from 'material-ui/Grid';
 
+import { db } from '../firebase';
+
 const paper1 = {
   backgroundColor: '#fff8e0',
   // height: 350,
@@ -135,9 +137,15 @@ class Page1 extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name + this.state.sex + this.state.age + this.state.dob + this.state.motherName + this.state.motherNumber + this.state.motherEmail + this.state.fatherName + this.state.fatherNumber + this.state.fatherEmail + this.state.address + this.state.city + this.state.zip);
-    event.preventDefault();
 
+    // alert('A name was submitted: ' + this.state.name + this.state.sex + this.state.age + this.state.dob + this.state.motherName + this.state.motherNumber + this.state.motherEmail + this.state.fatherName + this.state.fatherNumber + this.state.fatherEmail + this.state.address + this.state.city + this.state.zip);
+    // event.preventDefault();
+    db.doCreateForm(this.state.name, this.state.sex ,this.state.age , this.state.dob , this.state.motherName , this.state.motherNumber , this.state.motherEmail , this.state.fatherName , this.state.fatherNumber , this.state.fatherEmail , this.state.address , this.state.city , this.state.zip)
+    .then(( ) => {
+      console.log("sucess");
+    }).catch((err)=> {
+      console.log(err);
+    });
   }
 
 

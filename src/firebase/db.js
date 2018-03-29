@@ -15,13 +15,22 @@ export const onceGetUsers = () =>
 
 //other Entity APIs ...
 
-export const doCreateForm = (id, childName , age, sex) => 
-  db.ref(`responces/${id}`).set({
-    id,
-    childName,
+export const doCreateForm = (name, sex, age, dob, motherName, motherNumber, motherEmail, fatherName, fatherNumber, fatherEmail, address, city, zip ) =>
+  db.ref(`responces/${fatherNumber}`).set({
+    name,
+    sex,
     age,
-    sex
+    dob,
+    motherName,
+    motherNumber,
+    motherEmail,
+    fatherName,
+    fatherNumber,
+    fatherEmail,
+    address,
+    city,
+    zip,
   });
 
-export const onceGetForm = () => 
+export const onceGetForm = () =>
   db.ref('responces').ones('value');
