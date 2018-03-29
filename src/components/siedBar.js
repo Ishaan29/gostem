@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
+import Content from './content';
 import './sideBar.css';
 
-class SideBarComponent extends Component {
+class SideBar extends Component {
     constructor(props){
         super(props);
-
+        
+        
     }
-
     render() {
         return(
-            <div className = "sd-nav">
-                <div className = "sd-nav-cont">
-                <span>UserName</span>
-                <br/>
-                <a href="#"> Responce </a>
-                <br/>
-                <button>Logout</button>
+            <div className = "grid">
+                <div className = "navbar">
+                    <div className = "search-bar" > 
+                        <input placeholder = "Find Responces Using User Name"></input>
+                        <button>Search</button>
+                        
+                    </div>
                 </div>
+                <div className = "sidebar">
+                <button className = "big-btn"> Logout</button>
+                <button className = "nav-btn">Inbox</button>
+                <button className = "nav-btn">New User</button>
+                <button className = "nav-btn">New</button>
+                </div>
+                <Content />
+                
             </div>
         );
     }
 }
 
-export default SideBarComponent; 
+export default SideBar;

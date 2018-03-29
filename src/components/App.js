@@ -15,39 +15,7 @@ import {firebase} from '../firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// const App = () => 
-//   <Router>
-//       <div>
-//       <Navigation />
 
-//       <hr/>
-
-//       <Route
-//         exact path={routes.LANDING}
-//         component={() => <LandingPage />}
-//       />
-//       <Route
-//         exact path={routes.SIGN_UP}
-//         component={() => <SignUpPage />}
-//       />
-//       <Route
-//         exact path={routes.SIGN_IN}
-//         component={() => <SignInPage />}
-//       />
-//       <Route
-//         exact path={routes.PASSWORD_FORGET}
-//         component={() => <PasswordForgetPage />}
-//       />
-//       <Route
-//         exact path={routes.HOME}
-//         component={() => <HomePage />}
-//       />
-//       <Route
-//         exact path={routes.ACCOUNT}
-//         component={() => <AccountPage />}
-//       />
-//     </div>
-//   </Router>
 injectTapEventPlugin();
 
 class App extends Component {
@@ -57,7 +25,7 @@ class App extends Component {
       authUser: null,
     };
   }
-  componentDidMount(){
+  componentDidMount (){
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
       ? this.setState(() => ({ authUser}))
@@ -66,41 +34,42 @@ class App extends Component {
   }
   render() {
     return(
-      
+      <MuiThemeProvider>
         <Router>
           <div>
-            <Navigation authUser={this.state.authUser} />
-            <hr/>
+            {/* <Navigation authUser={this.state.authUser} /> */}
+            {/* <hr/> */}
             <Route
           exact path={routes.LANDING}
           component={() => <LandingPage />}
         />
-        <Route
+        {/* <Route
           exact path={routes.SIGN_UP}
           component={() => <SignUpPage />}
-        />
+        /> */}
         <Route
           exact path={routes.SIGN_IN}
           component={() => <SignInPage />}
         />
-        <Route
+        {/* <Route
           exact path={routes.PASSWORD_FORGET}
           component={() => <PasswordForgetPage />}
-        />
+        /> */}
         <Route
           exact path={routes.HOME}
-          component={() => <HomePage />}
+          component={() => <SideBarComponent />}
         />
         <Route
           exact path={routes.ACCOUNT}
           component={() => < SideBarComponent/>}
         />
+        
       
         </div>
 
        
        </Router>
-      
+      </MuiThemeProvider>
     );
   }
 }
