@@ -33,4 +33,4 @@ export const doCreateForm = (name, sex, age, dob, motherName, motherNumber, moth
   });
 
 export const onceGetForm = () =>
-  db.ref('responces').ones('value');
+  db.ref('responces').once('value');

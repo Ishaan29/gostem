@@ -94,6 +94,7 @@ const styles = {
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 });
+
 const INITIAL_STATE = {
   name: '',
   sex: '',
