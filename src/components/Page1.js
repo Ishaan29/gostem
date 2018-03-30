@@ -117,7 +117,7 @@ class Page1 extends Component {
     //  this.state = Page.fieldvalues;
     this.state = {...INITIAL_STATE};
 
-    // this.handelChange = this.handelChange.bind(this);
+    this.handelChange = this.handelChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -129,13 +129,13 @@ class Page1 extends Component {
   //     });
   // };
 
-  // handelChange(x,event) {
-  //   this.setState({
-  //     [event.target.dob]: event.target.dob
+  handelChange(x,event) {
+    this.setState({
+      [event.target.dob]: event.target.dob
 
-  //   });
-  //   console.log(this.state);
-  // }
+    });
+    console.log(this.state);
+  }
 
   handleSubmit(event) {
 
@@ -167,6 +167,8 @@ class Page1 extends Component {
       zip,
       error,
     } = this.state;
+
+    const isInvalid = name ===""|| sex === "" || age ==="" || dob ==="" || motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "";
     return (
       <div style={styles.container}
       >
@@ -337,7 +339,7 @@ class Page1 extends Component {
               </Paper>
             </div>
             <div style={styles.button}>
-              <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" />
+              <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
             </div>
           </div>
 

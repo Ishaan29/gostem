@@ -23,7 +23,7 @@ class SideBar extends Component {
     render() {
         if(this.state.authUser){
         return(
-            <div className = "grid">
+            <div className = "grid scroller">
                 <div className = "navbar">
                     <div className = "search-bar" > 
                         <input placeholder = "Find Responces Using User Name"></input>
@@ -34,8 +34,8 @@ class SideBar extends Component {
                 <div className = "sidebar">
                 <button className = "big-btn" onClick={auth.doSignOut}> Logout</button>
                 <button className = "nav-btn">Inbox</button>
-                <button className = "nav-btn">New User</button>
-                <button className = "nav-btn">New</button>
+                {/* <button className = "nav-btn">New User</button>
+                <button className = "nav-btn">New</button> */}
                 </div>
                 <Content />
                 
