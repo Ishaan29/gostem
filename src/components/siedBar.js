@@ -10,18 +10,18 @@ class SideBar extends Component {
         super(props);
         
         this.state = {
-            authUser: null
+            authUser: false
         }
     }
     componentDidMount (){
         firebase.auth.onAuthStateChanged(authUser => {
           authUser
-          ? this.setState(() => ({ authUser}))
-          : this.setState(() => ({authUser: null}));
+          ? this.setState(() => ({ authUser: true}))
+          : this.setState(() => ({authUser: false}));
         });
       }
     render() {
-        if(authUser){
+        if(this.state.authUser){
         return(
             <div className = "grid">
                 <div className = "navbar">
