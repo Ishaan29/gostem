@@ -6,14 +6,36 @@ import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Paper from 'material-ui/Paper';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Card} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import './SignIn.css';
 
-const style = {
+const paper1 = {
+  backgroundColor: '#fff8e0',
+  // height: 350,
+  // width: 300,
+  marginBottom: 80,
+  padding: 36,
+  // marginLeft: 'auto',
+  // marginRight: 'auto',
+  // alignContent: 'center',
+  // textAlign: 'center',
+  // paddingLeft: 40,
+  // display: 'inline-block',
+};
+const styles = {
+  container: {
+    // width: 500 ,
+    maxWidth: 800,
+    marginTop: 67,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: 7
+  },
   // margin: 12,
 };
 
@@ -24,7 +46,7 @@ const styleCard = {
 
 const SignInPage = ({ history }) =>
   <div>
-    <h1>SignIn</h1>
+    <h1 style={styles.container}>SignIn</h1>
     <SignInForm history={history} />
     <SignUpLink />
   </div>
@@ -80,9 +102,11 @@ class SignInForm extends Component {
       email === '';
 
     return (
+      <div style={styles.container}
+      >
       <MuiThemeProvider>
         <div>
-      <Card style={styleCard}>  
+        <Paper style={paper1} zDepth={5}>  
         <form onSubmit={this.onSubmit}>
           <TextField
             hintText="Email Address"
@@ -92,6 +116,7 @@ class SignInForm extends Component {
             type="text"
             // placeholder="Email Address"
           />
+          <br/>
           <TextField
             hintText="Password"
             floatingLabelText="Password"
@@ -101,17 +126,18 @@ class SignInForm extends Component {
             // placeholder="Password"
           />
           <br/>
-          <RaisedButton disabled={isInvalid} type="submit" label="SignIn" secondary={true}  style={style}/>
+          <RaisedButton disabled={isInvalid} type="submit" label="SignIn" secondary={true}/>
          
           { error && <p>{error.message}</p> }
           </form>
         
         
-        </Card>  
+        </Paper>  
           
         </div>
        
       </MuiThemeProvider>
+      </div>
     );
   }
 }
