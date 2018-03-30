@@ -1,0 +1,13 @@
+
+
+
+#canvas {
+	
+	/*pointer-events: none;*/
+	/* display: block; */
+	position: absolute;
+	z-index: -1;
+	background-color: #fcfcfc;
+}
+
+

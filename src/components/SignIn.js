@@ -14,12 +14,12 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
-  margin: 12,
+  // margin: 12,
 };
 
 const styleCard = {
-  height: 500,
-  width:500,
+  // height: 500,
+  // width:500,
 };
 
 const SignInPage = ({ history }) =>
@@ -81,19 +81,24 @@ class SignInForm extends Component {
 
     return (
       <MuiThemeProvider>
+        <div>
       <Card style={styleCard}>  
         <form onSubmit={this.onSubmit}>
           <TextField
+            hintText="Email Address"
+            floatingLabelText="Email Address"
             value={email}
             onChange={event => this.setState(byPropKey('email', event.target.value))}
             type="text"
-            placeholder="Email Address"
+            // placeholder="Email Address"
           />
           <TextField
+            hintText="Password"
+            floatingLabelText="Password"
             value={password}
             onChange={event => this.setState(byPropKey('password', event.target.value))}
             type="password"
-            placeholder="Password"
+            // placeholder="Password"
           />
           <br/>
           <RaisedButton disabled={isInvalid} type="submit" label="SignIn" secondary={true}  style={style}/>
@@ -104,7 +109,7 @@ class SignInForm extends Component {
         
         </Card>  
           
-         
+        </div>
        
       </MuiThemeProvider>
     );

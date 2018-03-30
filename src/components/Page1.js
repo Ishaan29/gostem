@@ -103,7 +103,7 @@ const INITIAL_STATE = {
   motherNumber: "",
   motherEmail:"",
   fatherName: "",
-  fatherNumber: '',
+  fatherNumber: "",
   fatherEmail: "",
   address: '',
   city: '',
@@ -116,7 +116,7 @@ class Page1 extends Component {
     //  this.state = Page.fieldvalues;
     this.state = {...INITIAL_STATE};
 
-    this.handelChange = this.handelChange.bind(this);
+    // this.handelChange = this.handelChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -128,13 +128,13 @@ class Page1 extends Component {
   //     });
   // };
 
-  handelChange(x,event) {
-    this.setState({
-      [event.target.dob]: event.target.dob
+  // handelChange(x,event) {
+  //   this.setState({
+  //     [event.target.dob]: event.target.dob
 
-    });
-    console.log(this.state);
-  }
+  //   });
+  //   console.log(this.state);
+  // }
 
   handleSubmit(event) {
 
@@ -176,7 +176,7 @@ class Page1 extends Component {
         >
           {/* <form onSubmit = {this.handleSubmit}>  */}
 
-          <h1>Form!</h1>
+          <h1 style={{marginBottom: 40}}>Form!</h1>
           <div >
             <div>
               <Paper style={paper1} zDepth={5}>
@@ -185,7 +185,7 @@ class Page1 extends Component {
                   style={styles.textchild}
                   hintText="Full Name"
                   floatingLabelText="Child Name"
-                  value={this.state.childname}
+                  value={this.state.name}
                   onChange={event => this.setState(byPropKey('name', event.target.value))}
                   name="childname"
                   validators={['required']}
@@ -213,12 +213,13 @@ class Page1 extends Component {
                   hintText="Child Age"
                   floatingLabelText="Child Age"
                   // value={this.state.childname}
-                  type = "number"
+                  // type = "number"
+                  value={this.state.age}
                   onChange={event => this.setState(byPropKey('age', event.target.value))}
                   name="childage"
 
-                  validators={['required']}
-                  errorMessages={['this field is required']}
+                  validators={['required','isNumber']}
+                  errorMessages={['this field is required','not a number']}
                 />
                 <DatePicker 
                 textFieldStyle={styles.customWidth}
@@ -239,7 +240,7 @@ class Page1 extends Component {
                 <TextValidator
                   hintText="Full Name"
                   floatingLabelText="Mother's Name"
-                  value={this.state.childname}
+                  value={this.state.motherName}
                   name="Mother's Name"
                   onChange = {(e)=> {this.setState(byPropKey("motherName", e.target.value))}}
                   // onChange={e => this.change(e)}
@@ -249,27 +250,26 @@ class Page1 extends Component {
                 <TextValidator
                   hintText="Mother's no."
                   floatingLabelText="Mobile no."
-                  value={this.state.childname}
+                  value={this.state.motherNumber}
                   name="Mother's no."
-                  type="number"
                   onChange = {(e) => {this.setState(byPropKey("motherNumber" , e.target.value ))}}
                   // onChange={e => this.change(e)}
-                  validators={['required']}
-                  errorMessages={['this field is required']}
+                  validators={['required','isNumber']}
+                  errorMessages={['this field is required','not a number']}
                 /><br />
                 <TextValidator
                   hintText="Mother's E-mail"
                   floatingLabelText="E-mail"
-                  value={this.state.childname}
+                  value={this.state.motherEmail}
                   name="Mother's E-mail"
 
                   onChange={(e)=>{this.setState(byPropKey("motherEmail", e.target.value))}}
-                  validators={['required']}
-                  errorMessages={['this field is required']}
+                  validators={['required','isEmail']}
+                  errorMessages={['this field is required','E-mail is not valid']}
                 /><br />
                 <TextValidator
                   floatingLabelText="Father's Name"
-                  value={this.state.childname}
+                  value={this.state.fatherName}
                   hintText="Full Name"
                   onChange={e => this.setState(byPropKey("fatherName" , e.target.value))}
                   name="Father's Name"
@@ -279,24 +279,23 @@ class Page1 extends Component {
                 /><br /> <TextField
                   hintText="Father's no."
                   floatingLabelText="Mobile no."
-                  type = "number"
-                  value={this.state.childname}
+                  value={this.state.fatherNumber}
                   onChange={e => this.setState(byPropKey("fatherNumber" , e.target.value))}
                   name="Father's no."
 
-                  validators={['required']}
-                  errorMessages={['this field is required']}
+                  validators={['required','isNumber']}
+                  errorMessages={['this field is required','not a number']}
                 /><br />
                 <TextValidator
                   hintText="Father's E-mail"
                   floatingLabelText="E-mail"
                   type ="email"
-                  value={this.state.childname}
+                  value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
-                  validators={['required']}
+                  validators={['required','isEmail']}
                   name="Father's E-mail"
 
-                  errorMessages={['this field is required']}
+                  errorMessages={['this field is required','E-mail is not valid']}
                 /><br />
               </Paper>
             </div>
@@ -309,6 +308,7 @@ class Page1 extends Component {
                   multiLine={true}
                   rows={2}
                   name="Full Address"
+                  value={this.state.address}
                   onChange = {e => this.setState(byPropKey("address", e.target.value))}
                   validators={['required']}
                   errorMessages={['this field is required']}
@@ -319,7 +319,7 @@ class Page1 extends Component {
                   
                   onChange={e => this.setState(byPropKey("city", e.target.value))}
                   name="Current City"
-
+                  value={this.state.city}
                   validators={['required']}
                   errorMessages={['this field is required']}
                 /><br />
@@ -329,9 +329,9 @@ class Page1 extends Component {
                  
                   onChange={e => this.setState(byPropKey("zip" , e.target.value))}
                   name="Zip"
-
-                  validators={['required']}
-                  errorMessages={['this field is required']}
+                  value={this.state.zip}
+                  validators={['required','isNumber']}
+                  errorMessages={['this field is required','not a number']}
                 /><br />
               </Paper>
             </div>

@@ -7,3 +7,10 @@
 /* .dat{
     margin-left: 55%;
 } */
+
+body{
+    background-image: url(./trianglify.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
