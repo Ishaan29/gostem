@@ -68,6 +68,7 @@
 .nav-btn {
     width: 80%;
     height: 35px;
+    position: relative;
     margin-left: 10%;
     background-color: transparent;
     border: none;
@@ -87,7 +88,8 @@
     width: 3px;
     background-color: coral;
     position: absolute;
-    left:2%;
+    top:0;
+    left:0;
     
     z-index: 1;
     
@@ -135,17 +137,27 @@
 .content {
     background-color: white;
     display: grid;
+    overflow: hidden;
+    
 }
 
-.content .inbox {
+.content .res {
     background-color: whitesmoke;
-    height: 32px;
+    height: 300px;
     width: 100% - 20px;
     margin-left: 2%;
     margin-right: 2%;
+    box-shadow: 10px 10px 20px lightgrey;
+    position: relative;
     
 
 }
+.res-con{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
 
 .inbox button {
     width: 100%;
@@ -158,9 +170,7 @@
     
 }
 
-.inbox span{
 
-}
 
 .inbox button .left {
    float: left;
