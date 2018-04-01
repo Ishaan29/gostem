@@ -12,6 +12,8 @@ import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 // import Grid from 'material-ui/Grid';
 
 import { db } from '../firebase';
+import HomePage from './Home';
+import SideBar from './siedBar';
 
 const paper1 = {
   backgroundColor: '#fff8e0',
@@ -109,6 +111,7 @@ const INITIAL_STATE = {
   address: '',
   city: '',
   zip: '',
+  login: false,
   error: null,
 };
 class Page1 extends Component {
@@ -148,7 +151,10 @@ class Page1 extends Component {
       console.log(err);
     });
   }
-
+  
+  componentDidMount() {
+    this.state.login = false;
+  }
 
   render() {
     const {
@@ -165,10 +171,12 @@ class Page1 extends Component {
       address,
       city,
       zip,
+      login,
       error,
     } = this.state;
 
     const isInvalid = name ===""|| sex === "" || age ==="" || dob ==="" || motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "";
+    if(!this.state.login){
     return (
       <div style={styles.container}
       >
@@ -340,14 +348,17 @@ class Page1 extends Component {
             </div>
             <div style={styles.button}>
               <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
+              <RaisedButton onClick={(e) => {this.setState(byPropKey("login", true))}}  />
             </div>
           </div>
 
           {/* </form> */}
         </ValidatorForm>
       </div>
-    );
-  }
+    );}
+    return (
+      <SideBar/>
+    );  }
 }
 
 export default Page1;
