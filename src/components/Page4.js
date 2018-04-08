@@ -11,7 +11,7 @@ import './page1.css';
 import SideBar from './siedBar';
 // import Page from './Page';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
-import {orange500, blue500} from 'material-ui/styles/colors';
+// import {orange500, blue500} from 'material-ui/styles/colors';
 // import Grid from 'material-ui/Grid';
 
 import { db } from '../firebase';
@@ -76,7 +76,7 @@ const styles = {
   },
 
   block: {
-    fill: orange500,
+    // fill: orange500,
     // textAlign: 'center',
     // float: 'left',
     maxWidth: 250,
@@ -88,15 +88,19 @@ const styles = {
   radioButton: {
     // float: 'right',
     // margin: 'auto'
-    // paddingRight: 7
+    // padding: 7
     // marginBottom: 3,
-    fill: orange500,
+    // fill: orange500,
   },
   textchild: {
-    borderColor: orange500,
+    borderColor:'green',
+    width: 600,
+    marginBottom:10,
     // float: 'left',
   },
   customWidth: {
+    marginleft: 143,
+    width: 400,
     // marginleft: 43,
     // width: 120,
     // float: 'left'
@@ -196,21 +200,29 @@ componentDidMount(){
             >
               <ValidatorForm
                 ref="form"
-      
+
                 onSubmit={this.handleSubmit}
               >
                 {/* <form onSubmit = {this.handleSubmit}>  */}
-      
-                <h1 style={{marginBottom: 40}}>Form!</h1>
-                <div >
+
+                <h1 className="header" style={{marginBottom: 40}}>STEM ACADEMY ADMISSIONS</h1>
+
                 <div>
-                    <Paper style={paper2} zDepth={5}>
-                      <h2>Allergy Alert Page!</h2><br/>
+                <div>
+                    <Paper className="backgroundG" zDepth={5}>
+                      
+
+                      <div className="headstyle">
+                        <p className="subhead">Allergy Alert </p>
+                        </div>
+                        <br></br>
+                        <div className="headdown">
                         <p>This page is designed for parents of children with allergies. Our first priority at STEM Academy is your child’s safety. Please help us by completing the information below and speaking directly with the center director concerning your child’s allergy. </p>
                         <br/>
                         <TextValidator
                            hintText="List known ALLERGY/ALLERGIES"
-                           floatingLabelText="List known ALLERGY/ALLERGIES"
+                           floatingLabelText=""
+                           style={styles.textchild}
                            fullWidth= "true"
                            multiLine={true}
                            name="List known ALLERGY/ALLERGIES"
@@ -234,9 +246,8 @@ componentDidMount(){
                             style={styles.checkbox}
                           />
                           <Checkbox
-                            label="Have you supplied the center with Benadryl and/or Epi pen 
-                            in the original box with your child’s information label on it?
-                            "
+                            label="Have you supplied the center with Benadryl andor Epi pen in the original box with your child’s information label on it?"
+
                             labelPosition="left"
                            //  checked={this.state.checked}
                            //   onCheck={this.updateCheck.bind(this)}
@@ -250,19 +261,22 @@ componentDidMount(){
                             style={styles.checkbox}
                           />
                         <br/>
-                      <p>PARENT’S OF CHILDREN WITH ALLERGIES MUST DISCUSS ANY/ALL DIETARY ISSUES WITH THE DIRECTOR UPON ENROLLMENT. WE STRONGLY ENCOURAGE PARENTS OF CHILDREN WITH ALLERGIES TO SUPPLY ALL THEIR CHILD’S FOOD AND BOWLS. </p>
+                        <div className="notes">
+                      <p>PARENTS OF CHILDREN WITH ALLERGIES MUST DISCUSS ANY/ALL DIETARY ISSUES WITH THE DIRECTOR UPON ENROLLMENT. WE STRONGLY ENCOURAGE PARENTS OF CHILDREN WITH ALLERGIES TO SUPPLY ALL THEIR CHILD’S FOOD AND BOWLS. </p>
+                      </div>
+                      </div>
                     </Paper>
                   </div>
-      
-                   <div style={styles.button}>
+
+            {/*}       <div style={styles.button}>
                     <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
                       <br/>
                     <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
                     <br/>
-                    {/* <RaisedButton onClick={()=>{}} label="next"/> */}
-                  </div>
+                     <RaisedButton onClick={()=>{}} label="next"/> </div>
+                */}
                 </div>
-      
+
                 {/* </form> */}
               </ValidatorForm>
             </div>
@@ -272,5 +286,5 @@ componentDidMount(){
           );
         }
       }
-      
+
       export default Page4;

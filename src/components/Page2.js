@@ -18,7 +18,7 @@ import { db } from '../firebase';
 
 const paper2 = {
     // backgroundColor: '#fff8e0',
-  
+
     // height: 520,
     // width: 800,
     // marginTop: 70,
@@ -29,13 +29,13 @@ const paper2 = {
     // alignContent: 'center',
     // textAlign: 'center',
     // padding: 40,
-  
+
     // display: 'inline-block',
   };
 
   const styles = {
     container: {
-  
+
       // width: 500 ,
       maxWidth: 800,
       margin: 'auto',
@@ -46,11 +46,11 @@ const paper2 = {
     button: {
       marginTop: 30
     },
-  
+
     block: {
       fill: orange500,
       // textAlign: 'center',
-  
+
       maxWidth: 250,
     },
     checkbox : {
@@ -64,15 +64,19 @@ const paper2 = {
       fill: orange500,
     },
     textchild: {
-      borderColor: orange500,
+      marginBottom: 10,
+      width: 600,
+      borderColor: 'green',
       // float: 'left',
     },
     customWidth: {
+      marginleft: 143,
+      width: 400,
       // marginleft: 43,
       // width: 120,
       // float: 'left'
     },
-  
+
   };
 
   const byPropKey = (propertyName, value) => () => ({
@@ -93,7 +97,7 @@ const paper2 = {
       super(props);
       //  this.state = Page.fieldvalues;
       this.state = {...INITIAL_STATE};
-  
+
       this.handelChange = this.handelChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -101,7 +105,7 @@ const paper2 = {
     handelChange(x,event) {
         this.setState({
           [event.target.dob]: event.target.dob
-    
+
         });
         console.log(this.state);
       }
@@ -121,7 +125,7 @@ const paper2 = {
     }
     render() {
         const {
-         
+
           motherName,
           motherNumber,
           motherEmail,
@@ -135,12 +139,12 @@ const paper2 = {
           tshirt,
           login,
           error,
-        } = this.state;        
+        } = this.state;
 
         const isInvalid =  motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "" || tshirt === false || childStay === "";
     if(!this.state.login){
 
-    
+
     return (
       <div style={styles.container}
       >
@@ -151,44 +155,96 @@ const paper2 = {
         >
           {/* <form onSubmit = {this.handleSubmit}>  */}
 
-          <h1 style={{marginBottom: 40}}>Form!</h1>
-          <div >
-          <div>
-              <Paper style={paper2} zDepth={5}>
-                <h2>Medical Information!</h2>
+          <h1 className="header" style={{marginBottom: 40}}>STEM ACADEMY ADMISSIONS</h1>
 
+          <div>
+          <div>
+              <Paper className="backgroundG" zDepth={5}>
+              <div className="headstyle">
+                <p className="subhead">Medical Information!</p>
+                </div>
+                <div className="headdown">
                 <TextValidator
-                  hintText="Medical Information (please share any allergy/medical/therapies/behavioral concerns)"
-                  fullWidth= "true"
+                  hintText="Medical Information (please share any specific concerns)"
+                  // fullWidth= "true"
                   multiLine={true}
                   rows={2}
+                  style={styles.textchild}
                   name="Full Address"
                   value={this.state.address}
                   onChange = {e => this.setState(byPropKey("address", e.target.value))}
                   validators={['required']}
                   errorMessages={['this field is required']}
                 /><br />
-               <p style={{paddingTop: 50}}><b>EMERGENCY MEDICAL RELEASE -</b> This is to certify that I voluntarily furnish medical information on the above-designated student to STEM ACADEMY FOR YOUNG KIDS. I hereby request that in the event that emergency medical care for my child. I further give my consent for an emergency medical facility or physician to administer necessary medical treatment to my child if I am unable to be reached or the situation requires immediate attention. I understand that I am responsible for paying all medical bills.</p><br/>
+               <p  className="notes"
+               style={{paddingTop: 20}}><b>EMERGENCY MEDICAL RELEASE -</b> This is to certify that I voluntarily furnish medical information on the above-designated student to
+               STEM ACADEMY FOR YOUNG KIDS. I hereby request that in the event that emergency medical care for my child. I further give my consent for an emergency medical
+                facility or physician to administer necessary medical treatment to my child if I am unable to be reached or the situation requires immediate attention. I understand
+                 that I am responsible for paying all medical bills.</p><br/>
                <TextValidator
                   hintText="Initial"
                   floatingLabelText="Initial"
+                  style={styles.textchild}
+                  
                   type ="email"
                   value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
+                <br></br>
+
                 <TextValidator
-                  hintText="Primary Care Physician"
-                  floatingLabelText="Primary Care Physician"
-  
+                  hintText="Physician"
+                  floatingLabelText="Physician"
+                  style={styles.textchild}
+
                   value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
+                  errorMessages={['this field is required','E-mail is not valid']}
+                />
+                <br></br>
+                <TextValidator
+                  hintText="Phone no."
+                  floatingLabelText="Phone no."
+                  value={this.state.motherNumber}
+                  name="Mother's no."
+                  style={styles.textchild}
+
+                  onChange = {(e) => {this.setState(byPropKey("motherNumber" , e.target.value ))}}
+                  // onChange={e => this.change(e)}
+                  validators={['required','isNumber']}
+                  errorMessages={['this field is required','not a number']}
+                /> <br/>
+                <p className="notes">
+                    <b>EMERGENCY CONTACT INNFORMATION –</b>Parents notified first, next in priority.
+                </p>
+                <br/>
+                <TextValidator
+                  hintText="Contact #1 Name"
+                  floatingLabelText="Contact #1 Name"
+
+                  value={this.state.fatherEmail}
+                  onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
+                  validators={['required','isEmail']}
+                  name="Father's E-mail"
+
+                  errorMessages={['this field is required','E-mail is not valid']}
+                />
+                <TextValidator
+                  hintText="Relationship"
+                  floatingLabelText="Relationship"
+
+                  value={this.state.fatherEmail}
+                  onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
+                  validators={['required','isEmail']}
+                  name="Father's E-mail"
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
                 <TextValidator
@@ -201,51 +257,15 @@ const paper2 = {
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 /> <br/>
-                <p>
-                    <b>EMERGENCY CONTACT INNFORMATION –</b>Parents notified first, next in priority. 
-                </p>
-                <br/>
-                <TextValidator
-                  hintText="Contact #1 Name"
-                  floatingLabelText="Contact #1 Name"
-              
-                  value={this.state.fatherEmail}
-                  onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
-                  validators={['required','isEmail']}
-                  name="Father's E-mail"
-                    
-                  errorMessages={['this field is required','E-mail is not valid']}
-                />
-                <TextValidator
-                  hintText="Relationship"
-                  floatingLabelText="Relationship"
-
-                  value={this.state.fatherEmail}
-                  onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
-                  validators={['required','isEmail']}
-                  name="Father's E-mail"
-                    
-                  errorMessages={['this field is required','E-mail is not valid']}
-                />
-                <TextValidator
-                  hintText="Phone no."
-                  floatingLabelText="Phone no."
-                  value={this.state.motherNumber}
-                  name="Mother's no."
-                  onChange = {(e) => {this.setState(byPropKey("motherNumber" , e.target.value ))}}
-                  // onChange={e => this.change(e)}
-                  validators={['required','isNumber']}
-                  errorMessages={['this field is required','not a number']}
-                /> <br/><Divider style={{marginTop: 30}} />
                 <TextValidator
                   hintText="Contact #2 Name"
                   floatingLabelText="Contact #2 Name"
-              
+
                   value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
                 <TextValidator
@@ -256,7 +276,7 @@ const paper2 = {
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
                 <TextValidator
@@ -272,12 +292,12 @@ const paper2 = {
                 <TextValidator
                   hintText="Contact #3 Name"
                   floatingLabelText="Contact #3 Name"
-              
+
                   value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
                 <TextValidator
@@ -288,7 +308,7 @@ const paper2 = {
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 />
                 <TextValidator
@@ -301,16 +321,16 @@ const paper2 = {
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 /> <br/>
+                </div>
               </Paper>
             </div>
 
-             <div style={styles.button}>
+          {/*}   <div style={styles.button}>
               <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
                 <br/>
               <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
               <br/>
-              {/* <RaisedButton onClick={()=>{}} label="next"/> */}
-            </div>
+            </div> */}
           </div>
 
           {/* </form> */}

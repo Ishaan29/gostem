@@ -93,10 +93,14 @@ const styles = {
     fill: orange500,
   },
   textchild: {
-    borderColor: orange500,
+    marginBottom: 10,
+    width: 600,
+    borderColor: 'green',
     // float: 'left',
   },
   customWidth: {
+    marginleft: 143,
+    width: 400,
     // marginleft: 43,
     // width: 120,
     // float: 'left'
@@ -196,37 +200,44 @@ componentDidMount(){
             >
               <ValidatorForm
                 ref="form"
-      
+
                 onSubmit={this.handleSubmit}
               >
                 {/* <form onSubmit = {this.handleSubmit}>  */}
-      
-                <h1 style={{marginBottom: 40}}>Form!</h1>
+
+                <h1 className="header" style={{marginBottom: 40}}>STEM ACADEMY ADMISSIONS</h1>
+
                 <div >
                 <div>
-                    <Paper style={paper2} zDepth={5}>
-                      <h2>Photo Concent!</h2>
+                    <Paper className="backgroundG" zDepth={5}>
+                    <div className="headstyle">
+                      <p className="subhead">Photo Concent</p>
+                      </div>
                       <br/>
+                      <div className="headdown">
                         <RadioButtonGroup name="shipSpeed">
                           <RadioButton
                             value="light"
                             label="YES, I DO GIVE MY CONSENT to STEM Academy to use photo or video images taken of my child in school brochures, advertisements for the school, on the website, in social media and in other school publications as they see fit. I agree to hold harmless STEM for Young Kids from any liability which may result from the use of said picture(s). This form will apply throughout my child’s tenure at STEM Academy for Young Kids and will not need to be updated unless I so desire. "
                             style={styles.radioButton}
                           />
+
                           <RadioButton
                             value="not_light"
                             label="No, I DO NOT GIVE MY CONSENT to STEM Academy to use pictures taken of my child in school brochures, advertisements for the school, on the website, in social media and other school publications as they see fit. "
                             style={styles.radioButton}
                           />
-                          
+
                         </RadioButtonGroup>
-                        <br/>
-                        
+                        <br></br>
+
                         <TextValidator
-                        hintText="If none apply, please use N/A. "
-                        floatingLabelText="Yes, with the following limitations listed below – if none apply, please use N/A. "
+                        hintText="If none apply, please use N/A "
+                        floatingLabelText=" "
                         multiLine={true}
-                        fullWidth= {true}
+                        // fullWidth= {true}
+                        style={styles.textchild}
+
                         // rows={2}
                         name="Full Address"
                         value={this.state.address}
@@ -234,19 +245,19 @@ componentDidMount(){
                         validators={['required']}
                         errorMessages={['this field is required']}
                       /><br />
-                      
+                      </div>
                     </Paper>
                   </div>
-      
+      { /*}
                    <div style={styles.button}>
                     <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
                       <br/>
                     <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
                     <br/>
-                    {/* <RaisedButton onClick={()=>{}} label="next"/> */}
-                  </div>
+                     <RaisedButton onClick={()=>{}} label="next"/>
+                  </div>  */}
                 </div>
-      
+
                 {/* </form> */}
               </ValidatorForm>
             </div>
@@ -256,5 +267,5 @@ componentDidMount(){
           );
         }
       }
-      
+
       export default Page3;

@@ -6,6 +6,7 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
+import './page1.css';
 
 // var fieldvalues = {
 //     childname: "null",
@@ -28,7 +29,7 @@ class Page extends Component{
     }
     nextPage(event){
         this.setState({
-            step : this.state.step + 1  
+            step : this.state.step + 1
         })
     }
     previousPage(event){
@@ -44,19 +45,19 @@ class Page extends Component{
               {(() =>{
                 switch(this.state.step) {
                 case 1:
-                    return <Page1 />
+                    return <Page1/>
                 case 2:
                     return <Page2/>
                 case 3:
-                    return <Page3 />
+                    return <Page3/>
                 case 4:
-                    return <Page4 />
+                    return <Page4/>
                 }
                 })()}
-                
-                <RaisedButton label="Next" onClick={this.nextPage} labelColor="white" backgroundColor="#024048" value="Submit" />
-                      <br/>
-                <RaisedButton label="Previous" onClick={this.previousPage} labelColor="white" backgroundColor="#FFAB31" value="Submit" />
+                <RaisedButton label="Previous" className="previous" onClick={this.previousPage} labelColor="white" backgroundColor="#FFAB31" value="Submit" />
+
+                <RaisedButton label="Next" onClick={this.nextPage} labelColor="white" className="next" backgroundColor="#024048" value="Submit" />
+
              </div>
         </MuiThemeProvider>
         );

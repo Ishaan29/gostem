@@ -13,6 +13,7 @@ import SideBar from './siedBar';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import {orange500, blue500} from 'material-ui/styles/colors';
 // import Grid from 'material-ui/Grid';
+// import {orange500, blue500} from 'material-ui/styles/colors';
 
 import { db } from '../firebase';
 
@@ -72,11 +73,13 @@ const styles = {
     padding: 7
   },
   button: {
-    marginTop: 30
+    marginLeft: 350,
+    marginTop: 30,
+
   },
 
   block: {
-    fill: orange500,
+    // fill: orange500,
     // textAlign: 'center',
     // float: 'left',
     maxWidth: 250,
@@ -87,18 +90,23 @@ const styles = {
   },
   radioButton: {
     // float: 'right',
-    // margin: 'auto'
-    // paddingRight: 7
+    // marginLeft: 263
+    // paddingLeft: 173,
     // marginBottom: 3,
-    fill: orange500,
+    // fill: orange500,
   },
-  textchild: {
-    borderColor: orange500,
+  hfour: {
+    marginLeft: 0,
+  },
+    textchild: {
+    // marginBottom: 10,
+    width: 600,
+    borderColor: 'green',
     // float: 'left',
   },
   customWidth: {
-    // marginleft: 43,
-    // width: 120,
+    marginleft: 143,
+    width: 400,
     // float: 'left'
   },
 
@@ -191,7 +199,7 @@ componentDidMount(){
     const isInvalid = name ===""|| sex === "" || age ==="" || dob ==="" || motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "" || tshirt === false || childStay === "";
     if(!this.state.login){
 
-    
+
     return (
       <div style={styles.container}
       >
@@ -202,14 +210,19 @@ componentDidMount(){
         >
           {/* <form onSubmit = {this.handleSubmit}>  */}
 
-          <h1 style={{marginBottom: 40}}>Form!</h1>
-          <div >
+          <h1 className="header" style={{marginBottom: 40}}>STEM ACADEMY ADMISSIONS</h1>
+          <div>
             <div>
-              
-              <Paper style={paper1} zDepth={5}>
-                <h2>Personal Details!</h2>
+
+              <Paper className="backgroundG" zDepth={5}>
+               <div className="headstyle">
+               <p className="subhead">Personal Details!</p>
+                </div>
+                <div className="headdown">
+                <br></br>
                 <TextValidator
                   underlineStyle={styles.textchild}
+                  className="inputfield"
                   style={styles.textchild}
                   hintText="Full Name"
                   floatingLabelText="Child Name"
@@ -220,6 +233,8 @@ componentDidMount(){
                   errormessages={['this field is required']}
 
                 />
+                <br></br>
+                <div className="radiob">
                 <RadioButtonGroup className="radio" labelPosition="left" style={styles.block}
                   onChange={event => this.setState(byPropKey('sex', event.target.value))}>
                   <RadioButton
@@ -229,7 +244,7 @@ componentDidMount(){
                   />
 
                   <RadioButton
-                  
+
                     value="Female"
                     label="Female"
                     checkedIcon={<ActionFavorite style={{ fill: orange500 }} />}
@@ -237,12 +252,17 @@ componentDidMount(){
                     style={styles.radioButton}
                   />
                 </RadioButtonGroup>
+                </div>
+                <br></br>
                 <TextValidator
-                  style={styles.customWidth}
+                  // style={styles.customWidth}
                   hintText="Child Age"
+                  style={styles.textchild}
+
                   floatingLabelText="Child Age"
                   // value={this.state.childname}
                   // type = "number"
+
                   value={this.state.age}
                   onChange={event => this.setState(byPropKey('age', event.target.value))}
                   name="childage"
@@ -250,26 +270,22 @@ componentDidMount(){
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 />
-                <DatePicker 
+                <DatePicker
                   openToYearSelection={true}
                   textFieldStyle={styles.customWidth}
-                  className="dat"
-                  floatingLabelText="Date Of Birth" 
-                  hintText="" 
+                  // className="dat"
+                  style={styles.textchild}
+
+                  floatingLabelText="Date Of Birth"
+                  hintText=""
                   value={this.state.dob}
-                  openToYearSelection={true} 
+                  openToYearSelection={true}
                   onChange = {(e,date) => {this.setState(byPropKey("dob", date))}}
                 />
                 <br />
-                <Checkbox
-                  name= "tshirt"
-                  labelPosition="left"
-                  label="T-shirt"
-                  value={this.state.tshirt}
-                  onChange = {event => this.setState(byPropKey('tshirt', event.target.value))}
-                  style={styles.checkbox}
-                  />
+
                   <h4>Child primarily lives with :-</h4>
+                  <div className="radiob">
                   <RadioButtonGroup className="radio" labelPosition="left" style={styles.block}
                   onChange={event => this.setState(byPropKey('childStay', event.target.value))}>
                   <RadioButton
@@ -294,17 +310,32 @@ componentDidMount(){
                     style={styles.radioButton}
                   />
                 </RadioButtonGroup>
+                </div>
                 <TextValidator
                   hintText="Other(please explain)"
                   floatingLabelText="Other(please explain)"
                   value={this.state.OtherExp}
+                  style={styles.textchild}
+
                   name="OtherExp"
                   onChange = {(e)=> {this.setState(byPropKey("OtherExp", e.target.value))}}
                 />
-                <h2>Parent's Information!</h2>
-
+                <div className="radiob">
+                <Checkbox
+                  name= "tshirt"
+                  labelPosition="left"
+                  label="Want a T-shirt??"
+                  value={this.state.tshirt}
+                  onChange = {event => this.setState(byPropKey('tshirt', event.target.value))}
+                  style={styles.checkbox}
+                  />
+                  </div>
+                <div className="headstyle">
+                <p>Parents Information!</p>
+                </div>
                 <TextValidator
                   hintText="Full Name"
+                  style={styles.textchild}
                   floatingLabelText="Mother's Name"
                   value={this.state.motherName}
                   name="Mother's Name"
@@ -318,6 +349,7 @@ componentDidMount(){
                   floatingLabelText="Mobile no."
                   value={this.state.motherNumber}
                   name="Mother's no."
+                  style={styles.textchild}
                   onChange = {(e) => {this.setState(byPropKey("motherNumber" , e.target.value ))}}
                   // onChange={e => this.change(e)}
                   validators={['required','isNumber']}
@@ -328,7 +360,8 @@ componentDidMount(){
                   floatingLabelText="E-mail"
                   value={this.state.motherEmail}
                   name="Mother's E-mail"
-                    
+                  style={styles.textchild}
+
                   onChange={(e)=>{this.setState(byPropKey("motherEmail", e.target.value))}}
                   validators={['required','isEmail']}
                   errorMessages={['this field is required','E-mail is not valid']}
@@ -338,35 +371,41 @@ componentDidMount(){
                   value={this.state.fatherName}
                   hintText="Full Name"
                   onChange={e => this.setState(byPropKey("fatherName" , e.target.value))}
+                  style={styles.textchild}
                   name="Father's Name"
-                    
+
                   validators={['required']}
                   errorMessages={['this field is required']}
                 /><br /> <TextField
                   hintText="Father's no."
+                  style={styles.textchild}
                   floatingLabelText="Mobile no."
                   value={this.state.fatherNumber}
                   onChange={e => this.setState(byPropKey("fatherNumber" , e.target.value))}
                   name="Father's no."
-                    
+
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 /><br />
                 <TextValidator
                   hintText="Father's E-mail"
                   floatingLabelText="E-mail"
+                  style={styles.textchild}
                   type ="email"
                   value={this.state.fatherEmail}
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-                    
+
                   errorMessages={['this field is required','E-mail is not valid']}
                 /><br />
-                <h2>Residence Information!</h2>
+                <div className="headstyle">
+                <p>Residence Information!</p>
+                </div>
                 <TextValidator
                   hintText="Full Address"
-                  floatingLabelText="Primary Address"
+                  floatingLabelText=""
+                  style={styles.textchild}
                   multiLine={true}
                   rows={2}
                   name="Full Address"
@@ -377,8 +416,9 @@ componentDidMount(){
                 /><br />
                 <TextValidator
                   hintText="Current City"
+                  style={styles.textchild}
                   floatingLabelText="City"
-                  
+
                   onChange={e => this.setState(byPropKey("city", e.target.value))}
                   name="Current City"
                   value={this.state.city}
@@ -388,23 +428,24 @@ componentDidMount(){
                 <TextValidator
                   hintText="Zip Code"
                   floatingLabelText="Zip"
-                 
+
+                  style={styles.textchild}
                   onChange={e => this.setState(byPropKey("zip" , e.target.value))}
                   name="Zip"
                   value={this.state.zip}
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 /><br />
+                </div>
               </Paper>
             </div>
-            <div style={styles.button}>
+        {/*    <div style={styles.button}>
               <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
               <br/>
-              <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
+              <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} primary={true} className="loginbutton" label="login"/>
               <br/>
-              
-              {/* <RaisedButton onClick={()=>{}} label="next"/> */}
-            </div>
+
+              </div> */}
           </div>
 
           {/* </form> */}
