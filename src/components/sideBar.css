@@ -351,3 +351,17 @@ body {
     color: #8694A6;
 
 }
+
+.loader {
+    height: 100%;
+    width: 100%;
+    background-color: #E54D42;
+    
+}
+
+.loader img {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -60%);
+}
