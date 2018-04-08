@@ -13,7 +13,6 @@ import * as routes from '../constants/routes';
 import {firebase} from '../firebase';
 import Page from './Page';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
