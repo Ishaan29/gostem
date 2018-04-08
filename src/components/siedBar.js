@@ -23,7 +23,7 @@ class SideBar extends Component {
     render() {
         if(this.state.authUser){
         return(
-            <div className = "grid scroller">
+            <div className = "grid ">
                 <div className = "navbar">
                     <div className = "search-bar" > 
                         <input placeholder = "Find Responces Using User Name"></input>

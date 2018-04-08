@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './sideBar.css';
 import { db } from '../firebase';
 import FullDetails from './fullDetails';
+import FaIconPack from 'react-icons/lib/fa/angle-left';
 
 class Content extends Component {
 
@@ -62,7 +63,7 @@ const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value,
 });
 
-
+const count = 0;
 class Responces extends Component {
     constructor(props) {
         super(props);
@@ -72,6 +73,7 @@ class Responces extends Component {
             users: this.props.users,
             showResults: false,
             uid: "",
+            data: [],
 
 
         }
@@ -82,17 +84,31 @@ class Responces extends Component {
             this.setState(() => ({ users: snapshot.val() })),
             console.log(this.state)
         );
-        
+
+
     }
 
 
-    
+    handelData() {
+        db.getDetailsByNumber(this.state.uid).then(snapshot =>
+            this.setState(byPropKey("data", snapshot.val()))
+        );
+    }
+
+    handelFirstLetter(name) {
+        var letter =  name.charAt(0);
+        return letter.toUpperCase();
+    }
+
 
 
     render() {
+
         const data = this.state.uid;
+
         if (!this.state.showResults) {
             return (
+
                 <div>
                     <div>
                         {Object.keys(this.state.users).map(uid =>
@@ -101,9 +117,16 @@ class Responces extends Component {
                                     this.setState(byPropKey("showResults", true),
                                         () => { this.setState(byPropKey("uid", uid)) })
                                 }}>
-                                    <span className="left"><div key={uid}>{this.state.users[uid].name}</div></span>
-                                    <span className="center"><div key={uid}>{this.state.users[uid].username}</div></span>
-                                    <span className="right">right</span>
+                                    <div className="info">
+                                        <div className="image"><h1>{this.handelFirstLetter(this.state.users[uid].name)}</h1></div>
+                                        <div className="basic-info">
+                                            <div className="name"><div key={uid.name}><p>{this.state.users[uid].name}</p></div> </div><br />
+                                            <div className="details"><div key={uid.age}><span> Age: {this.state.users[uid].age} Gender: {this.state.users[uid].sex}</span></div></div>
+                                            <div className = "location"><div key={uid.address}>{this.state.users[uid].address},{this.state.users[uid].city},{this.state.users[uid].zip}</div></div>
+                                            <div className = "time"> <div key={uid.sex}><p>9:30</p></div></div> 
+                                        </div>
+                                        {/* <span>right</span> */}
+                                    </div>
                                 </button>
                             </div>
 
@@ -144,13 +167,55 @@ class Responces extends Component {
             );
         }
         return (
-          
-            <div>
-                <div >
-                <button onClick = {() => {this.setState(byPropKey("showResults", false))}}>go back</button>
+
+            <div class = "full-details">
+                {this.handelData()}
+                <div className = "mini-nav">
+                    <button className = "btn-lft"onClick={() => { this.setState(byPropKey("showResults", false)) }}> <FaIconPack className ="back"/></button>
+                    <span>{this.state.data.name} Profile</span>
+                   
                 </div>
-                <div> 
-                  {this.props.users.map()}
+                <div className ="child-info">
+                    <div className = "heading"><p>Childs Information</p></div>
+                    <div className = "key">
+                    {/* <p className="key-p">Full Name</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p>
+                    <p className="key-p">Age</p> */}
+                    {Object.keys(this.state.data).map(itr => 
+                        <p className="key-p">{itr}</p>
+                    )}
+                    
+                    </div>
+                    <div className ="value">
+                    <p className="value-p">{this.state.data.address}</p>
+                    <p className="value-p">{this.state.data.age}</p>
+                    <p className="value-p">{this.state.data.city}</p>
+                    <p className="value-p">{this.state.data.fatherEmail}</p>
+                    <p className="value-p">{this.state.data.fatherName}</p>
+                    <p className="value-p">{this.state.data.fatherNumber}</p>
+                    <p className="value-p">{this.state.data.motherEmail}</p>
+                    <p className="value-p">{this.state.data.motherName}</p>
+                    <p className="value-p">{this.state.data.motherNumber}</p>
+                    <p className="value-p">{this.state.data.name}</p>
+                    <p className="value-p">{this.state.data.sex}</p>
+                    <p className="value-p">{this.state.data.zip}</p>
+                   
+                    </div>
+                    
+                </div>
+                <div>
+                    <div>
+
+                        
+                    </div>
                 </div>
             </div>
         );

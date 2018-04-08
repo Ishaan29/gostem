@@ -1,13 +1,19 @@
 * {
     margin: 0;
     padding: 0;
+    
+}
+body {
+  overflow: scroll;
+  
 }
 
 .grid {
     display: grid;
     grid-template-columns: 1fr 5fr;
     height: 100%;
-    overflow: hidden;
+    /* overflow: scroll; */
+    
 
 }
 .navbar {
@@ -21,7 +27,7 @@
 
 .sidebar {
     background-color:#F4F4F7;
-    height: 90.5vh;
+    height: 100vh;
     box-shadow: 0px 10px 20px lightgrey;
 }
 
@@ -120,10 +126,10 @@
 }
 
 .content {
-    background-color: white;
+    background-color: #EEEFF3;
     display: grid;
-    overflow-y: scroll;
-    
+    height: 100%;
+   
 }
 
 .content .res {
@@ -135,6 +141,7 @@
     box-shadow: 10px 10px 20px lightgrey;
     position: relative;
     
+    
 
 }
 .res-con{
@@ -144,27 +151,203 @@
 
 
 
-.inbox button {
+.inbox button{
+    margin-top: 15px;
+    margin-left: 5%;
+    height: 100px;
+    width:90%;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    border-bottom: 1px solid #E7E8EB;
+    box-shadow: 10px 10px 20px #E7E8EB;
+   
+    
+}
+
+
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+
+
+}
+.inbox .image{
+    background-color: #FDBF5F;
+    height: 60px;
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border-radius: 100%;
+}
+
+.inbox .image h1 {
+    margin-top: 20%;
+    font-size: 30px;
+    color: white;
+
+}
+
+.info .basic-info {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    position: relative;
+    height: 100px;
+
+}
+.info .basic-info .name  {
+   float: left;
+   position: absolute;
+   margin-top: 20px;
+   margin-left: 10px;
+   font-size: 20px;
+   font-family: "Roboto" , sans-serif;
+   font-weight: bold;
+   color: #5A6A7A;
+
+}
+.info .basic-info .details {
+    float: left;
+    position: absolute;
+    margin-top: 2.6%;
+    margin-left: 10px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    color: #B3BCC2;
+
+}
+
+.info .basic-info .location {
+    float: left;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 4.3%;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    color: #7D8CA0;
+
+    
+}
+.info .basic-info .time {
+    margin-left: 90%;
+    position: absolute;
+    margin-right: 20px;
+    color: #37B699;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  
+}
+
+.full-details .mini-nav {
+    /* grid-column-start: 3;
+    grid-column-end: 6;  */
+   
     width: 100%;
-    height: 32px;
+    position: relative;
+    background-color: #4A5E72;
+    height: 80px;
+}
+.full-details .mini-nav .btn-lft {
+    height: 80px;
+    width: 100px;
     border: none;
     outline: none;
-    cursor: pointer;
-    border-bottom: 1px solid grey;
-    
-    
+    background-color: #4A5E72;
+   
+    border-right: 1px solid #536C80;
+
+}
+.full-details .mini-nav span {
+    margin-top: 25px;
+    margin-left: 10px;
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    color: white;
 }
 
-
-
-.inbox button .left {
-   float: left;
-   margin-left: 10px;
-}
-.inbox button .right {
+.full-details .mini-nav .btn-rt {
     float: right;
-    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    outline: none;
+    border: none;
 }
-.content .inbox:first-child {
+
+.full-details .mini-nav .btn-rt:active {
+    background-color: lightgreen;
+}
+
+.full-details .mini-nav .back {
+    height: 50px;
+    width: 50px;
+    color: white;
+}
+
+.full-details {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    height: 100%;
+    width: 90%;
+    background-color: #EEEFF3;
+    margin-left: 5%;
+   
+}
+
+.child-info {
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color:#ffffff;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 6fr;
+}
+
+.child-info .heading {
+    height: 100%;
+    background-color: #F6F7F9;
+    /* box-shadow: 0px 1px 2px lightgray; */
+    grid-column-start: 1;
+    grid-column-end: 5;
+   
+}
+
+.heading p{
+    color: #4A5C6D;
+    position: relative;
     margin-top: 5%;
+    margin-left: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    
+}
+.child-info .key {
+    
+    position: relative;
+}
+
+.child-info .key .key-p {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #B5BEC9;;
+}
+.child-info .value {
+    
+    position: relative;
+
+}
+
+.child-info .value .value-p {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #8694A6;
+
 }
