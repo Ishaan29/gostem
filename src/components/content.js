@@ -3,6 +3,7 @@ import './sideBar.css';
 import { db } from '../firebase';
 import FullDetails from './fullDetails';
 import FaIconPack from 'react-icons/lib/fa/angle-left';
+import LoaderHOC from '../HOC/loderHoc';
 
 class Content extends Component {
 
@@ -15,6 +16,7 @@ class Content extends Component {
 
         this.state = {
             users: null,
+          
         };
     }
     componentWillMount() {
@@ -222,4 +224,4 @@ class Responces extends Component {
     }
 }
 
-export default Content;
+export default LoaderHOC(Content);
