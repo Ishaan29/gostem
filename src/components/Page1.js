@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import DatePicker from 'material-ui/DatePicker';
 import Paper from 'material-ui/Paper';
 import './page1.css';
+import SideBar from './siedBar';
 // import Page from './Page';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
+import {orange500, blue500} from 'material-ui/styles/colors';
 // import Grid from 'material-ui/Grid';
 
 import { db } from '../firebase';
 
 const paper1 = {
-  backgroundColor: '#fff8e0',
+  // backgroundColor: '#fff8e0',
   // height: 350,
   // width: 300,
   marginBottom: 80,
@@ -27,7 +30,7 @@ const paper1 = {
   // display: 'inline-block',
 };
 const paper2 = {
-  backgroundColor: '#fff8e0',
+  // backgroundColor: '#fff8e0',
 
   // height: 520,
   // width: 800,
@@ -43,7 +46,7 @@ const paper2 = {
   // display: 'inline-block',
 };
 const paper3 = {
-  backgroundColor: '#fff8e0',
+  // backgroundColor: '#fff8e0',
 
   // height: 320,
   // width: 800,
@@ -60,6 +63,7 @@ const paper3 = {
 };
 const styles = {
   container: {
+
     // width: 500 ,
     maxWidth: 800,
     margin: 'auto',
@@ -72,16 +76,24 @@ const styles = {
   },
 
   block: {
+    fill: orange500,
     // textAlign: 'center',
-
+    // float: 'left',
     maxWidth: 250,
   },
+  checkbox : {
+    maxWidth: 250,
+    paddingBottom: 20
+  },
   radioButton: {
+    // float: 'right',
     // margin: 'auto'
     // paddingRight: 7
     // marginBottom: 3,
+    fill: orange500,
   },
   textchild: {
+    borderColor: orange500,
     // float: 'left',
   },
   customWidth: {
@@ -109,6 +121,9 @@ const INITIAL_STATE = {
   address: '',
   city: '',
   zip: '',
+  childStay: '',
+  tshirt: false,
+  login: false,
   error: null,
 };
 class Page1 extends Component {
@@ -141,14 +156,16 @@ class Page1 extends Component {
 
     // alert('A name was submitted: ' + this.state.name + this.state.sex + this.state.age + this.state.dob + this.state.motherName + this.state.motherNumber + this.state.motherEmail + this.state.fatherName + this.state.fatherNumber + this.state.fatherEmail + this.state.address + this.state.city + this.state.zip);
     // event.preventDefault();
-    db.doCreateForm(this.state.name, this.state.sex ,this.state.age , this.state.dob , this.state.motherName , this.state.motherNumber , this.state.motherEmail , this.state.fatherName , this.state.fatherNumber , this.state.fatherEmail , this.state.address , this.state.city , this.state.zip)
+    db.doCreateForm(this.state.name, this.state.sex ,this.state.age , this.state.dob , this.state.motherName , this.state.motherNumber , this.state.motherEmail , this.state.fatherName , this.state.fatherNumber , this.state.fatherEmail , this.state.address , this.state.city , this.state.zip,this.state.tshirt.this.state.childStay,)
     .then(( ) => {
       console.log("sucess");
     }).catch((err)=> {
       console.log(err);
     });
   }
-
+componentDidMount(){
+  this.state.login= false;
+}
 
   render() {
     const {
@@ -165,10 +182,16 @@ class Page1 extends Component {
       address,
       city,
       zip,
+      childStay,
+      tshirt,
+      login,
       error,
     } = this.state;
 
-    const isInvalid = name ===""|| sex === "" || age ==="" || dob ==="" || motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "";
+    const isInvalid = name ===""|| sex === "" || age ==="" || dob ==="" || motherName === "" || motherNumber === ""|| motherEmail === ""|| fatherName === "" || fatherNumber === "" || fatherEmail === "" || address === "" || city === "" || zip === "" || tshirt === false || childStay === "";
+    if(!this.state.login){
+
+    
     return (
       <div style={styles.container}
       >
@@ -182,9 +205,11 @@ class Page1 extends Component {
           <h1 style={{marginBottom: 40}}>Form!</h1>
           <div >
             <div>
+              
               <Paper style={paper1} zDepth={5}>
-                <h3>Child Information!</h3>
+                <h2>Personal Details!</h2>
                 <TextValidator
+                  underlineStyle={styles.textchild}
                   style={styles.textchild}
                   hintText="Full Name"
                   floatingLabelText="Child Name"
@@ -204,9 +229,10 @@ class Page1 extends Component {
                   />
 
                   <RadioButton
+                  
                     value="Female"
                     label="Female"
-                    checkedIcon={<ActionFavorite style={{ color: '#F44336' }} />}
+                    checkedIcon={<ActionFavorite style={{ fill: orange500 }} />}
                     uncheckedIcon={<ActionFavoriteBorder />}
                     style={styles.radioButton}
                   />
@@ -225,20 +251,57 @@ class Page1 extends Component {
                   errorMessages={['this field is required','not a number']}
                 />
                 <DatePicker 
-                textFieldStyle={styles.customWidth}
-                className="dat"
-                floatingLabelText="Date Of Birth" 
-                hintText="" 
-                value={this.state.dob}
-                openToYearSelection={true} 
-                onChange = {(e,date) => {this.setState(byPropKey("dob", date))}}
+                  openToYearSelection={true}
+                  textFieldStyle={styles.customWidth}
+                  className="dat"
+                  floatingLabelText="Date Of Birth" 
+                  hintText="" 
+                  value={this.state.dob}
+                  openToYearSelection={true} 
+                  onChange = {(e,date) => {this.setState(byPropKey("dob", date))}}
                 />
                 <br />
-              </Paper>
-            </div>
-            <div>
-              <Paper style={paper2} zDepth={5}>
-                <h3>Parent's Information!</h3>
+                <Checkbox
+                  name= "tshirt"
+                  labelPosition="left"
+                  label="T-shirt"
+                  value={this.state.tshirt}
+                  onChange = {event => this.setState(byPropKey('tshirt', event.target.value))}
+                  style={styles.checkbox}
+                  />
+                  <h4>Child primarily lives with :-</h4>
+                  <RadioButtonGroup className="radio" labelPosition="left" style={styles.block}
+                  onChange={event => this.setState(byPropKey('childStay', event.target.value))}>
+                  <RadioButton
+                    value="momndad"
+                    label="Mom & Dad"
+                    style={styles.radioButton}
+                  />
+
+                  <RadioButton
+                    value="mom"
+                    label="Mom"
+                    style={styles.radioButton}
+                  />
+                  <RadioButton
+                    value="dad"
+                    label="Dad"
+                    style={styles.radioButton}
+                  />
+                  <RadioButton
+                    value="other"
+                    label="Other"
+                    style={styles.radioButton}
+                  />
+                </RadioButtonGroup>
+                <TextValidator
+                  hintText="Other(please explain)"
+                  floatingLabelText="Other(please explain)"
+                  value={this.state.OtherExp}
+                  name="OtherExp"
+                  onChange = {(e)=> {this.setState(byPropKey("OtherExp", e.target.value))}}
+                />
+                <h2>Parent's Information!</h2>
 
                 <TextValidator
                   hintText="Full Name"
@@ -265,7 +328,7 @@ class Page1 extends Component {
                   floatingLabelText="E-mail"
                   value={this.state.motherEmail}
                   name="Mother's E-mail"
-
+                    
                   onChange={(e)=>{this.setState(byPropKey("motherEmail", e.target.value))}}
                   validators={['required','isEmail']}
                   errorMessages={['this field is required','E-mail is not valid']}
@@ -276,7 +339,7 @@ class Page1 extends Component {
                   hintText="Full Name"
                   onChange={e => this.setState(byPropKey("fatherName" , e.target.value))}
                   name="Father's Name"
-
+                    
                   validators={['required']}
                   errorMessages={['this field is required']}
                 /><br /> <TextField
@@ -285,7 +348,7 @@ class Page1 extends Component {
                   value={this.state.fatherNumber}
                   onChange={e => this.setState(byPropKey("fatherNumber" , e.target.value))}
                   name="Father's no."
-
+                    
                   validators={['required','isNumber']}
                   errorMessages={['this field is required','not a number']}
                 /><br />
@@ -297,14 +360,10 @@ class Page1 extends Component {
                   onChange={e => this.setState(byPropKey("fatherEmail" , e.target.value))}
                   validators={['required','isEmail']}
                   name="Father's E-mail"
-
+                    
                   errorMessages={['this field is required','E-mail is not valid']}
                 /><br />
-              </Paper>
-            </div>
-            <div>
-              <Paper style={paper3} zDepth={5}>
-                <h3>Residence Information!</h3>
+                <h2>Residence Information!</h2>
                 <TextValidator
                   hintText="Full Address"
                   floatingLabelText="Primary Address"
@@ -340,12 +399,20 @@ class Page1 extends Component {
             </div>
             <div style={styles.button}>
               <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
+              <br/>
+              <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
+              <br/>
+              
+              {/* <RaisedButton onClick={()=>{}} label="next"/> */}
             </div>
           </div>
 
           {/* </form> */}
         </ValidatorForm>
       </div>
+    );}
+    return(
+      <SideBar/>
     );
   }
 }

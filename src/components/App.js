@@ -11,9 +11,9 @@ import AccountPage from './Account';
 import SideBarComponent from './siedBar';
 import * as routes from '../constants/routes';
 import {firebase} from '../firebase';
-import Page1 from './Page1';
+import Page from './Page';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+// import form from './expForm';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
@@ -41,7 +41,7 @@ class App extends Component {
             {/* <hr/> */}
             <Route
           exact path={routes.LANDING}
-          component={() => <Page1 />}
+          component={() => <Page />}
         />
         {/* <Route
           exact path={routes.SIGN_UP}
@@ -63,8 +63,8 @@ class App extends Component {
           exact path={routes.ACCOUNT}
           component={() => < SideBarComponent/>}
         />
-        
-      
+
+
         </div>
 
 

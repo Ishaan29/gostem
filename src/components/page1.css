@@ -3,14 +3,105 @@
     /* float: left; */
     margin-top: .5em;
 }
+@import url('https://fonts.googleapis.com/css?family=Hi+Oswald|Lato');
 
-/* .dat{
-    margin-left: 55%;
-} */
+
 
 body{
-    background-image: url(./trianglify.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background: #C9D6FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Lato', sans-serif;
+}
+.child {
+  margin: auto;
+  width:50%;
+  border: 3px solid red;
+  border-radius: 7px;
+  padding:2%;
+}
+.parent {
+  margin:auto;
+  width: 50%;
+  border-radius: 7px;
+
+  border: 3px solid red;
+  padding:2%;
+}
+.residence{
+  margin: auto;
+  width: 50%;
+  border-radius: 7px;
+
+  border: 3px solid red;
+  padding:2%;
+}
+.button {
+  margin-left:45%;
+  margin-top:2%;
+}
+
+h3 {
+  text-align: center;
+  border-bottom: 3px solid red;
+}
+
+.header3 {
+  background-color: blue;
+  height:;
+  width:
+}
+input{
+  background-color: blue;
+}
+
+.header{
+  text-align: center;
+  margin-top: 3%;
+  color: blue;
+}
+
+.subhead{
+  text-align: center;
+
+}
+.side {
+  margin-left: 18%;
+}
+
+.headdown{
+  margin-top: 8%;
+  text-align: center;
+}
+.inputfield{
+
+}
+.headstyle{
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  width: 100%;
+  background: #44A08D;  /* fallback for old browsers */
+  height: 180px;
+  position: relative;
+  border-radius: 4px;
+}
+.headstyle p  {
+  margin-left: 10%;
+  margin-top: 115px;
+  position: absolute;
+  font-family: 'Lato', sans-serif;
+  font-size: 40px;
+  color:white;
+
+}
+.backgroundG{
+  width: 100%;
+  background-color: white;
+  position: relative;
+}
+.lable{
+  font-family: 'Lato';
+  color:green;
+  font-size: 20px;
+  font-weight: 500;
 }
