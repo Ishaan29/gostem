@@ -3,6 +3,8 @@ import './sideBar.css';
 import { db } from '../firebase';
 import FullDetails from './fullDetails';
 import FaIconPack from 'react-icons/lib/fa/angle-left';
+import LoaderHOC from '../HOC/loderHoc';
+import Loader from '../assets/loader.svg';
 
 class Content extends Component {
 
@@ -15,6 +17,8 @@ class Content extends Component {
 
         this.state = {
             users: null,
+            isLoading: true,
+
         };
     }
     componentWillMount() {
@@ -22,9 +26,12 @@ class Content extends Component {
             this.setState(() => ({ users: snapshot.val() }))
         );
 
+
     }
+
     render() {
         const { users } = this.state;
+        if(this.state.users != null){
         return (
             <div className="content">
                 {/* <div className = "inbox">
@@ -37,6 +44,9 @@ class Content extends Component {
                 {!!users && <Responces users={users} />}
                 {/* </div> */}
             </div>
+        );}
+        return(
+            <div className = "loader"><img src={Loader} /></div>
         );
     }
 }
@@ -70,10 +80,11 @@ class Responces extends Component {
 
 
         this.state = {
-            users: this.props.users,
+
             showResults: false,
             uid: "",
             data: [],
+
 
 
         }
@@ -100,8 +111,7 @@ class Responces extends Component {
         return letter.toUpperCase();
     }
 
-
-
+  
     render() {
 
         const data = this.state.uid;
@@ -111,19 +121,19 @@ class Responces extends Component {
 
                 <div>
                     <div>
-                        {Object.keys(this.state.users).map(uid =>
+                        {Object.keys(this.props.users).map(uid =>
                             <div className="inbox">
                                 <button onClick={() => {
                                     this.setState(byPropKey("showResults", true),
                                         () => { this.setState(byPropKey("uid", uid)) })
                                 }}>
                                     <div className="info">
-                                        <div className="image"><h1>{this.handelFirstLetter(this.state.users[uid].name)}</h1></div>
+                                        <div className="image"><h1>{this.handelFirstLetter(this.props.users[uid].name)}</h1></div>
                                         <div className="basic-info">
-                                            <div className="name"><div key={uid.name}><p>{this.state.users[uid].name}</p></div> </div><br />
-                                            <div className="details"><div key={uid.age}><span> Age: {this.state.users[uid].age} Gender: {this.state.users[uid].sex}</span></div></div>
-                                            <div className = "location"><div key={uid.address}>{this.state.users[uid].address},{this.state.users[uid].city},{this.state.users[uid].zip}</div></div>
-                                            <div className = "time"> <div key={uid.sex}><p>9:30</p></div></div> 
+                                            <div className="name"><div key={uid.name}><p>{this.props.users[uid].name}</p></div> </div><br />
+                                            <div className="details"><div key={uid.age}><span> Age: {this.props.users[uid].age} Gender: {this.props.users[uid].sex}</span></div></div>
+                                            <div className = "location"><div key={uid.address}>{this.props.users[uid].address},{this.props.users[uid].city},{this.props.users[uid].zip}</div></div>
+                                            <div className = "time"> <div key={uid.sex}><p>9:30</p></div></div>
                                         </div>
                                         {/* <span>right</span> */}
                                     </div>
@@ -167,13 +177,16 @@ class Responces extends Component {
             );
         }
         return (
-
+            <div>
+               
             <div class = "full-details">
+           
                 {this.handelData()}
+                
                 <div className = "mini-nav">
                     <button className = "btn-lft"onClick={() => { this.setState(byPropKey("showResults", false)) }}> <FaIconPack className ="back"/></button>
                     <span>{this.state.data.name} Profile</span>
-                   
+
                 </div>
                 <div className ="child-info">
                     <div className = "heading"><p>Childs Information</p></div>
@@ -189,10 +202,10 @@ class Responces extends Component {
                     <p className="key-p">Age</p>
                     <p className="key-p">Age</p>
                     <p className="key-p">Age</p> */}
-                    {Object.keys(this.state.data).map(itr => 
+                    {Object.keys(this.state.data).map(itr =>
                         <p className="key-p">{itr}</p>
                     )}
-                    
+
                     </div>
                     <div className ="value">
                     <p className="value-p">{this.state.data.address}</p>
@@ -207,18 +220,20 @@ class Responces extends Component {
                     <p className="value-p">{this.state.data.name}</p>
                     <p className="value-p">{this.state.data.sex}</p>
                     <p className="value-p">{this.state.data.zip}</p>
-                   
+
                     </div>
-                    
+
                 </div>
                 <div>
                     <div>
 
-                        
+
                     </div>
                 </div>
             </div>
+            </div>
         );
+       
     }
 }
 

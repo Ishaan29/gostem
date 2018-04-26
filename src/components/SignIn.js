@@ -13,14 +13,8 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const style = {
-  //margin: 12,
-};
+import './SignIn.css';
 
-const styleCard = {
-  //height: 500,
-  //width:500,
-};
 
 const SignInPage = ({ history }) =>
   <div>
@@ -37,6 +31,7 @@ const INITIAL_STATE = {
   email: '',
   password: '',
   error: null,
+  clicked: false,
 };
 
 class SignInForm extends Component {
@@ -46,6 +41,9 @@ class SignInForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  handelClick() {
+    this.setState({clicked: true});
+  }
   onSubmit = (event) => {
     const {
       email,
@@ -79,34 +77,54 @@ class SignInForm extends Component {
       password === '' ||
       email === '';
 
+    
+   
+    if(this.state.error != null ) {this.state.clicked = true}
+
+    const className = this.state.clicked ? 'error' : 'hidden';
     return (
-      <MuiThemeProvider>
-      <Card  style={styleCard}>  
-        <form onSubmit={this.onSubmit}>
-          <TextField
-            value={email}
-            onChange={event => this.setState(byPropKey('email', event.target.value))}
-            type="text"
-            placeholder="Email Address"
-          />
-          <TextField
-            value={password}
-            onChange={event => this.setState(byPropKey('password', event.target.value))}
-            type="password"
-            placeholder="Password"
-          />
-          <br/>
-          <RaisedButton disabled={isInvalid} type="submit" label="SignIn" secondary={true}  style={style}/>
+      // <MuiThemeProvider>
+      // <Card  style={styleCard}>  
+      //   <form onSubmit={this.onSubmit}>
+      //     <TextField
+      //       value={email}
+      //       onChange={event => this.setState(byPropKey('email', event.target.value))}
+      //       type="text"
+      //       placeholder="Email Address"
+      //     />
+      //     <TextField
+      //       value={password}
+      //       onChange={event => this.setState(byPropKey('password', event.target.value))}
+      //       type="password"
+      //       placeholder="Password"
+      //     />
+      //     <br/>
+      //     <RaisedButton disabled={isInvalid} type="submit" label="SignIn" secondary={true}  style={style}/>
          
-          { error && <p>{error.message}</p> }
-          </form>
+      //     { error && <p>{error.message}</p> }
+      //     </form>
         
         
-        </Card>  
+      //   </Card>  
           
          
        
-      </MuiThemeProvider>
+      // </MuiThemeProvider>
+
+      <div className="login">
+       
+       <div className = {className} > 
+        { error && <p>{error.message}</p> }
+        </div>
+    
+        <div className = "input" >
+          <input placeholder = "Enter Your Email" value = {email}  type="text" onChange={ event => this.setState(byPropKey("email", event.target.value))}></input><br/>
+          <input placeholder = "Enter Your Password" value = {password}  type="password" onChange={ event => this.setState(byPropKey("password", event.target.value))}></input><br />
+          <button onClick = {this.onSubmit}> submit</button>
+          
+        </div>
+       
+      </div>
     );
   }
 }

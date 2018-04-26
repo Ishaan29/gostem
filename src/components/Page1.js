@@ -694,9 +694,9 @@ componentDidMount(){
                   </div>
 
             <div style={styles.button}>
-              <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit" disabled={isInvalid} />
+              <RaisedButton onClick={this.handleSubmit} type="submit" label="Submit" primary={true} value="Submit"  />
               <br/>
-              <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/>
+              {/* <RaisedButton onClick={()=>{this.setState(byPropKey("login",true))}} label="login"/> */}
               <br/>
               
               {/* <RaisedButton onClick={()=>{}} label="next"/> */}

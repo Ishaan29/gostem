@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import Content from './content';
 import './sideBar.css';
 import SignInPage from './SignIn';
-import { auth } from '../firebase';
+import { auth,db } from '../firebase';
 import SignIn from './SignIn';
 import {firebase} from '../firebase';
+
+
+
+
 class SideBar extends Component {
     constructor(props){
         super(props);
         
         this.state = {
-            authUser: false
+            authUser: false,
+            
         }
     }
     componentDidMount (){
@@ -20,13 +25,17 @@ class SideBar extends Component {
           : this.setState(() => ({authUser: false}));
         });
       }
+
+      handelSearch() {
+       
+    }
     render() {
         if(this.state.authUser){
         return(
             <div className = "grid ">
                 <div className = "navbar">
                     <div className = "search-bar" > 
-                        <input placeholder = "Find Responces Using User Name"></input>
+                        <input placeholder = "Find Responces Using User Name"  ></input>
                         <button>Search</button>
                         
                     </div>
