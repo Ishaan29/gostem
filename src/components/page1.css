@@ -15,3 +15,21 @@ body{
     background-size: cover;
     background-attachment: fixed; */
 }
+.sidebox{
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: gray;
+}
+
+.mainContainer{
+    padding-left: 25%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="mainContainer"] {
+        padding-left: 0%;
+        width: 100%;
+    }
+}
