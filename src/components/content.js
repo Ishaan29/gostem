@@ -86,6 +86,7 @@ class Responces extends Component {
             data: [],
 
 
+
         }
     }
 
@@ -110,8 +111,7 @@ class Responces extends Component {
         return letter.toUpperCase();
     }
 
-
-
+  
     render() {
 
         const data = this.state.uid;
@@ -177,9 +177,12 @@ class Responces extends Component {
             );
         }
         return (
-
+            <div>
+               
             <div class = "full-details">
+           
                 {this.handelData()}
+                
                 <div className = "mini-nav">
                     <button className = "btn-lft"onClick={() => { this.setState(byPropKey("showResults", false)) }}> <FaIconPack className ="back"/></button>
                     <span>{this.state.data.name} Profile</span>
@@ -228,7 +231,9 @@ class Responces extends Component {
                     </div>
                 </div>
             </div>
+            </div>
         );
+       
     }
 }
 
