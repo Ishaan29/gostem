@@ -110,7 +110,7 @@ class SignInForm extends Component {
          
        
       // </MuiThemeProvider>
-
+      <div className = "background">
       <div className="login">
        
        <div className = {className} > 
@@ -124,6 +124,7 @@ class SignInForm extends Component {
           
         </div>
        
+      </div>
       </div>
     );
   }

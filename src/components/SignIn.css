@@ -2,6 +2,10 @@
     margin: 0;
     
 }
+.background {
+    background-color: black; 
+}
+
 .login{
     left: 50%;
     top: 50%;

@@ -15,6 +15,7 @@ import Page from './Page';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Template from './template';
+import NotFound from './notFound';
 
 injectTapEventPlugin();
 
