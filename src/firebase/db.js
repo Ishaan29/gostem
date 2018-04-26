@@ -15,7 +15,7 @@ export const onceGetUsers = () =>
 
 //other Entity APIs ...
 
-export const doCreateForm = (name, sex, age, dob, motherName, motherNumber, motherEmail, fatherName, fatherNumber, fatherEmail, address, city, zip ) =>
+export const doCreateForm = (name, sex, age, dob, motherName, motherNumber, motherEmail, fatherName, fatherNumber, fatherEmail, address, city, zip,OtherExp,medInfo,medInitial,medPhysi,medPhysiNumber,emgContactName1,emgContactRel1,emgContact1,emgContactName2,emgContactRel2,emgContact2,emgContactName3,emgContactRel3,emgContact3,photoCon,photoConLim,allergies,EPI,Benadryl,suppliedEPI,allergy_action) =>
   db.ref(`responces/${fatherNumber}`).set({
     name,
     sex,
@@ -30,6 +30,27 @@ export const doCreateForm = (name, sex, age, dob, motherName, motherNumber, moth
     address,
     city,
     zip,
+    OtherExp,
+    medInfo,
+    medInitial,
+    medPhysi,
+    medPhysiNumber,
+    emgContactName1,
+    emgContactRel1,
+    emgContact1,
+    emgContactName2,
+    emgContactRel2,
+    emgContact2,
+    emgContactName3,
+    emgContactRel3,
+    emgContact3,
+    photoCon,
+    photoConLim,
+    allergies,
+    EPI,
+    Benadryl,
+    suppliedEPI,
+    allergy_action
   });
 
 export const onceGetForm = () =>
