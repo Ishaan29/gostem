@@ -1,12 +1,14 @@
 * {
     margin-left: 0px;
     margin-top: 0px;
-    background-color: white;
+    /* background-color: white; */
 }
+
 
 .temp {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    background-color: white;
 
 }
 
