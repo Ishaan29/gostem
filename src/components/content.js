@@ -18,20 +18,20 @@ class Content extends Component {
         this.state = {
             users: null,
             isLoading: true,
-          
+
         };
     }
     componentWillMount() {
         db.onceGetForm().then(snapshot =>
             this.setState(() => ({ users: snapshot.val() }))
         );
-       
-    
+
+
     }
-    
+
     render() {
         const { users } = this.state;
-        if(this.state.users != null){ 
+        if(this.state.users != null){
         return (
             <div className="content">
                 {/* <div className = "inbox">
@@ -80,7 +80,7 @@ class Responces extends Component {
 
 
         this.state = {
-           
+
             showResults: false,
             uid: "",
             data: [],
@@ -115,7 +115,7 @@ class Responces extends Component {
     render() {
 
         const data = this.state.uid;
-        
+
         if (!this.state.showResults) {
             return (
 
@@ -133,7 +133,7 @@ class Responces extends Component {
                                             <div className="name"><div key={uid.name}><p>{this.props.users[uid].name}</p></div> </div><br />
                                             <div className="details"><div key={uid.age}><span> Age: {this.props.users[uid].age} Gender: {this.props.users[uid].sex}</span></div></div>
                                             <div className = "location"><div key={uid.address}>{this.props.users[uid].address},{this.props.users[uid].city},{this.props.users[uid].zip}</div></div>
-                                            <div className = "time"> <div key={uid.sex}><p>9:30</p></div></div> 
+                                            <div className = "time"> <div key={uid.sex}><p>9:30</p></div></div>
                                         </div>
                                         {/* <span>right</span> */}
                                     </div>
@@ -186,7 +186,7 @@ class Responces extends Component {
                 <div className = "mini-nav">
                     <button className = "btn-lft"onClick={() => { this.setState(byPropKey("showResults", false)) }}> <FaIconPack className ="back"/></button>
                     <span>{this.state.data.name} Profile</span>
-                   
+
                 </div>
                 <div className ="child-info">
                     <div className = "heading"><p>Childs Information</p></div>
@@ -202,10 +202,10 @@ class Responces extends Component {
                     <p className="key-p">Age</p>
                     <p className="key-p">Age</p>
                     <p className="key-p">Age</p> */}
-                    {Object.keys(this.state.data).map(itr => 
+                    {Object.keys(this.state.data).map(itr =>
                         <p className="key-p">{itr}</p>
                     )}
-                    
+
                     </div>
                     <div className ="value">
                     <p className="value-p">{this.state.data.address}</p>
@@ -220,14 +220,14 @@ class Responces extends Component {
                     <p className="value-p">{this.state.data.name}</p>
                     <p className="value-p">{this.state.data.sex}</p>
                     <p className="value-p">{this.state.data.zip}</p>
-                   
+
                     </div>
-                    
+
                 </div>
                 <div>
                     <div>
 
-                        
+
                     </div>
                 </div>
             </div>
