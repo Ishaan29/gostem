@@ -14,7 +14,7 @@ import {firebase} from '../firebase';
 import Page from './Page';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Template from './template';
+import Template2 from './template2';
 import NotFound from './notFound';
 
 injectTapEventPlugin();
@@ -42,7 +42,7 @@ class App extends Component {
             {/* <hr/> */}
             <Route
           exact path={routes.LANDING}
-          component={() => <Template />}
+          component={() => <Template2 />}
         />
         {/* <Route
           exact path={routes.SIGN_UP}
@@ -64,8 +64,8 @@ class App extends Component {
           exact path={routes.ACCOUNT}
           component={() => < SideBarComponent/>}
         />
-        
-      
+
+
         </div>
 
 

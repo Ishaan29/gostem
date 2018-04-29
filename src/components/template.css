@@ -15,12 +15,12 @@ body{
 }
 
 .side-panel {
-   
+
     height: 100vh;
     background-color: #ebebeb;
     width: 20vw;
     position: fixed;
-    
+
 }
 
 .float-btn  {
@@ -80,7 +80,21 @@ body{
     font-family: 'Lato';
     color: #212F3C;
 }
+lable {
+  margin-left: 10%;
+  padding: 15px;
 
+}.
+.radiobutton {
+  margin-left: 10%;
+}
+.pstyling{
+  margin-left: 10%;
+  width:80%;
+  border: 2px dashed red;
+  padding: 5px;
+  margin-top: 2%;
+}
 .scroll {
     height: 100%;
     width: 100%;
